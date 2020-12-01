@@ -1,7 +1,7 @@
 <x-app>
-   <form method="POST" action="{{ $user->path() }}"></form>
-   @csrf
-   @method('PATCH')
+   <form method="POST" action="{{ $user->path() }}" enctype="multipart/form-data">
+        @csrf
+        @method('PATCH')
 
         <div class="mb-6">
             <label class="block mb-2 text-xs font-bold text-gray-700 uppercase"
@@ -14,6 +14,7 @@
                 type="text"
                 name="name"
                 id="name"
+                value="{{ $user->name }}"
                 required
             >
 
@@ -33,6 +34,7 @@
                 type="text"
                 name="username"
                 id="username"
+                value="{{ $user->username }}"
                 required
             >
 
@@ -40,6 +42,32 @@
                 <p class="mt-2 text-xs text-red-500"> {{ $message }}</p>
             @enderror
         </div>
+
+
+            <div class="mb-6">
+                <label class="block mb-2 text-xs font-bold text-gray-700 uppercase"
+                    for='username'
+                >
+                    Avatar
+                </label>
+                <div class="flex">
+                     <input class="w-full p-2 border border-gray-400"
+                            type="file"
+                            name="avatar"
+                            id="avatar"
+                        >
+                <img src="{{ $user->avatar }}"
+                    alt="avatar"
+                    width="40"
+                >
+            </div>
+            @error('username')
+                <p class="mt-2 text-xs text-red-500"> {{ $message }}</p>
+            @enderror
+        </div>
+
+
+
 
         <div class="mb-6">
             <label class="block mb-2 text-xs font-bold text-gray-700 uppercase"
@@ -52,6 +80,7 @@
                 type="email"
                 name="email"
                 id="email"
+                value="{{ $user->email }}"
                 required
             >
 
@@ -86,15 +115,24 @@
                 Password Confirmation
             </label>
 
-            <input class="border border-gray-400 p-2 w-full"
+            <input class="w-full p-2 border border-gray-400"
                 type="password"
                 name="password_confirmation"
                 id="password_confirmation"
+                required
             >
             @error('password_confirmation')
-                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
+        <div class="mb-6">
+            <button type="submit"
+                    class="px-4 py-2 mr-4 text-white bg-blue-400 rounded hover:bg-blue-500"
+            >
+                    Submit
+            </button>
 
+            <a href='{{ $user->path() }}' class="hover:underline">Cancel</a>
+        </div>
     </form>
 </x-app>

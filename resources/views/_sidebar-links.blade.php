@@ -1,6 +1,6 @@
 <ul>
     <li>
-        <a href="{{route('home')}}" class="block mb-4 text-lg font-bold">
+        <a href="/tweets" class="block mb-4 text-lg font-bold">
             Home
         </a>
     </li>
@@ -10,33 +10,15 @@
         </a>
     </li>
     <li>
-        <a href="#" class="block mb-4 text-lg font-bold">
-            Notifications
-        </a>
-    </li>
-    <li>
-        <a href="#" class="block mb-4 text-lg font-bold">
-            Messages
-        </a>
-    </li>
-    <li>
-        <a href="#" class="block mb-4 text-lg font-bold">
-            Bookmarks
-        </a>
-    </li>
-    <li>
-        <a href="#" class="block mb-4 text-lg font-bold">
-            Lists
-        </a>
-    </li>
-    <li>
         <a href="{{route('profile', auth()->user())}}" class="block mb-4 text-lg font-bold">
             Profile
         </a>
     </li>
     <li>
-        <a href="#" class="block mb-4 text-lg font-bold">
-            More
-        </a>
+        <form method="POST" action='/logout'>
+            @csrf
+            <button class="text-lg font-bold">Logout</button>
+        </form>
+
     </li>
 </ul>

@@ -1,4 +1,4 @@
-<div class = "px-8 py-6 mb-8 border border-blue-400 rounded-lg">
+<div class = "px-8 py-6 mb-8 border border-blue-400 rounded-xl">
     <form method="POST" action="/tweets">
         @csrf
 
@@ -10,7 +10,7 @@
 
         <hr class="my-4">
 
-        <footer class="flex justify-between">
+        <footer class="flex items-center justify-between">
             <img
                 src="{{ auth()->user()->avatar }}"
                 alt="your avatar"
@@ -20,7 +20,7 @@
             >
             <button
                 type="submit"
-                class="px-6 py-1 text-white bg-blue-400 rounded-full shadow"
+                class="px-10 py-1 text-sm text-white bg-blue-400 rounded-full shadow hover:bg-blue-600"
                 >Jab</button>
         </footer>
     </form>
